@@ -58,7 +58,7 @@ int ndevs;// Actual number of devices on the bus
 void setup()
 {
   // start serial port
-  Serial.begin(9600);
+ // Serial.begin(9600);
  
   // Start up the library
   sensors.begin();
@@ -66,33 +66,30 @@ void setup()
   // locate devices on the bus
   // Serial.print("Locating devices...");
   ndevs=sensors.getDeviceCount();
-  Serial.print("Found ");
-  Serial.print(ndevs, DEC);
-  Serial.println(" devices.");
+ // Serial.print("Found ");
+ // Serial.print(ndevs, DEC);
+ // Serial.println(" devices.");
   // report parasite power requirements
-  Serial.print("Parasite power : "); 
-  if (sensors.isParasitePowerMode()) Serial.println("ON");
-  else Serial.println("OFF");
+ // Serial.print("Parasite power : "); 
+ // if (sensors.isParasitePowerMode()) Serial.println("ON");
+ // else Serial.println("OFF");
 
 // Setting up the thermo sensors:
   for (int i=0;i<ndevs;i++){
     if (!sensors.getAddress(thermos[i], i)){
-      Serial.print("Unable to find device "); 
-      Serial.println(i);
+    //  Serial.print("Unable to find device "); 
+    //  Serial.println(i);
     }else{
-      
-      Serial.print("Sensor ");
-      Serial.print(i);
-      Serial.print(" OK");
-      printAddress(thermos[i]);
+  //    Serial.print("Sensor OK: ");
+   //   Serial.println(i);
+    //  printAddress(thermos[i]);
       sensors.setResolution(thermos[i], TEMPERATURE_PRECISION);
-      Serial.println();
     }
   }
   
   Ethernet.begin(mac, ip);
   server.begin();
-  Serial.println("Server started");
+ // Serial.println("Server started");
 }
 
 void loop()
