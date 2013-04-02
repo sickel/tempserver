@@ -80,10 +80,13 @@ void setup()
       Serial.print("Unable to find device "); 
       Serial.println(i);
     }else{
-      Serial.print("Sensor OK: ");
-      Serial.println(i);
+      
+      Serial.print("Sensor ");
+      Serial.print(i);
+      Serial.print(" OK");
       printAddress(thermos[i]);
       sensors.setResolution(thermos[i], TEMPERATURE_PRECISION);
+      Serial.println();
     }
   }
   
@@ -197,7 +200,7 @@ void printAddress(DeviceAddress deviceAddress,Client client)
   for (uint8_t i = 0; i < 8; i++)
   {
     // zero pad the address if necessary
-    if (deviceAddress[i] < 16) Serial.print("0");
+    if (deviceAddress[i] < 16) client.print("0");
     client.print(deviceAddress[i], HEX);
   }
 }
