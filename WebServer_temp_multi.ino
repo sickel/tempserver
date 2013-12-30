@@ -30,7 +30,7 @@ byte ip[] = { 192,168,0,177 };
 // are no other arduinoes around
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 // maxsensors is the highest number of connected sensors
-#define MAXSENSORS 7
+#define MAXSENSORS 5
 /* It seems to work with 7 sensors, with 8 or more, the sketch is 
    hanging -it may be possible to fit in more sensors by stripping 
    out all unneeded code (i.e. Serial.print calls for debugging and 
@@ -44,7 +44,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 // There should be no need to change anything below here ...
 
 Server server(80);
-#define TEMPERATURE_PRECISION 9
+#define TEMPERATURE_PRECISION 10
 // Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
 OneWire oneWire(ONE_WIRE_PIN);
 
